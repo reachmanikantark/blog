@@ -1,0 +1,8 @@
+{
+    "baseUrl": "http://web",
+    "video": false,
+    "viewportWidth": 1280,
+    "viewportHeight": 720,
+    "testFiles": "**/e2e/**/*.cy.js"
+  }
+  

@@ -1,0 +1,41 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      DB_HOST: sql-db
+      DB_USER: root
+      DB_PASS: blog
+      DB_NAME: blog
+      DB_PORT: 3306
+    depends_on:
+      - sql-db
+  sql-db:
+    #image: mysql
+    build:
+      context: ./sql-db
+    #restart: always
+    environment:
+      MYSQL_DATABASE: blog
+      #MYSQL_USER: root
+      MYSQL_PASSWORD: blog
+      MYSQL_ROOT_PASSWORD: blog
+    ports:
+      - "3306:3306"
+    #volumes:
+    #  - .:/var/lib/mysql
+  cypress:
+    image: cypress/browsers:node14.17.0-chrome91-ff89
+    working_dir: /e2e
+    volumes:
+      - ./app/cypress:/e2e
+      - ./app/cypress/cypress.json:/e2e/cypress.json
+      #- /dev/shm:/dev/shm
+    depends_on:
+      - web
