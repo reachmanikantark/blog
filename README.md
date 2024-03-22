@@ -17,7 +17,8 @@ Sample Blog
   *  You have the facility to create new user also http://localhost:users/add
   *  Logged in user only create , edit or delete the posts.
 * It will install apache, php and mysql and then create the containers.
-* I setup the cypress also in the docker container but it is not working perfectly to test the cypress from the docker.
+* Setup the cypress also in the docker container but it is not working perfectly to test the cypress from the docker.
+* I did not implement CI/CD GitHub actions and the CI Pipelines.
 
   
 
